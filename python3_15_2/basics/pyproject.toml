@@ -1,0 +1,34 @@
+[project]
+name = "basics"
+version = "0.1.0"
+description = "Ejercicios básicos organizados como módulos ejecutables con uv run"
+readme = "README.md"
+authors = [
+    { name = "ggranados", email = "guillermo.granados@outlook.com" }
+]
+requires-python = ">=3.15"
+dependencies = []
+
+[project.scripts]
+app = "app.main:run"
+proctor = "app.proctor:run"
+greeter = "app.greetings.greeter:run"
+word-counter = "app.exercises.word_counter:run"
+temp-converter = "app.exercises.temp_converter:run"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = "src"
+module-name = "app"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "ruff>=0.17.4",
+]
